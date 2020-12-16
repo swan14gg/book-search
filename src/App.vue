@@ -1,12 +1,15 @@
 <template>
-  <div></div>
+  <RootContainer />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import RootContainer from './components/RootContainer.vue';
+
 export default defineComponent({
   name: 'App',
   components: {
+    RootContainer,
   }
 });
 </script>
