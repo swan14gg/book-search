@@ -1,16 +1,20 @@
 <template>
-  <div>RootContainer</div>
+  <SearchBar v-model="searchTarget" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
+import SearchBar from './SearchBar.vue';
 
 export default defineComponent({
   name: 'RootContainer',
-  props: {
+  components: {
+    SearchBar
   },
   setup() {
+    const searchTarget = ref('');
     return {
+      searchTarget
     }
   },
 });
