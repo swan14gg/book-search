@@ -16,11 +16,15 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "../node_modules/bulma/bulma.sass";
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap');
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+$family-sans-serif: 'M PLUS Rounded 1c', sans-serif;
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@import "../node_modules/bulma/bulma.sass";
 </style>
