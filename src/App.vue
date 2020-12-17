@@ -6,6 +6,7 @@
 import { defineComponent } from 'vue';
 import RootContainer from './components/RootContainer.vue';
 
+
 export default defineComponent({
   name: 'App',
   components: {
@@ -15,7 +16,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "bulma/bulma.sass";
+@import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
