@@ -1,17 +1,15 @@
 <template>
-  <form>
-    <div class="field has-addons">
-      <div class="control has-icons-left">
-        <input type="search" class="input" :class="[commonClasses]" placeholder="Search books..." :value="modelValue" @input="updateValue">
-        <span class="icon is-left">
-          <i class="fas fa-book"></i>
-        </span>
-      </div>
-      <div class="control">
-        <button type="submit" class="button" :class="[commonClasses]">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
+  <form class="field has-addons">
+    <div class="control has-icons-left">
+      <input type="search" class="input" :class="[commonClasses]" placeholder="Search books..." :value="modelValue" @input="updateValue">
+      <span class="icon is-left">
+        <i class="fas fa-book"></i>
+      </span>
+    </div>
+    <div class="control">
+      <button type="submit" class="button" :class="[commonClasses]">
+        <i class="fas fa-search"></i>
+      </button>
     </div>
   </form>
 </template>
