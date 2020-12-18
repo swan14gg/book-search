@@ -14,7 +14,7 @@ import BookCard from './BookCard.vue';
 
 type State = {
   searchTarget: string;
-  isRelevance: boolean;
+  isByRelevance: boolean;
 }
 
 export default defineComponent({
@@ -29,14 +29,14 @@ export default defineComponent({
   setup() {
     const state = reactive<State>({
       searchTarget: "",
-      isRelevance: true
+      isByRelevance: true
     });
-    function setIsRelevance(value: boolean) {
-      state.isRelevance = value;
+    function setIsByRelevance(value: boolean) {
+      state.isByRelevance = value;
     }
     return {
       state,
-      setIsRelevance
+      setIsByRelevance
     }
   },
 });
