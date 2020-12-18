@@ -2,7 +2,7 @@
   <Header />
   <SearchBar v-model="state.searchTarget" />
   <SelectSearchType @set="setIsRelevance" />
-  {{ state }}
+  <BookCard />
 </template>
 
 <script lang="ts">
@@ -10,6 +10,7 @@ import { defineComponent, reactive } from 'vue';
 import Header from './Header.vue';
 import SearchBar from './SearchBar.vue';
 import SelectSearchType from './SelectSearchType.vue';
+import BookCard from './BookCard.vue';
 
 type State = {
   searchTarget: string;
@@ -22,6 +23,7 @@ export default defineComponent({
     Header,
     SearchBar,
     SelectSearchType,
+    BookCard,
   },
 
   setup() {
@@ -39,3 +41,6 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped lang="scss">
+</style>
