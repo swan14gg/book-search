@@ -12,6 +12,9 @@ import SearchBar from './SearchBar.vue';
 import SelectSearchType from './SelectSearchType.vue';
 import BookCard from './BookCard.vue';
 
+import useBookInfos from '@/composables/use-bookinfos';
+import useActionBookInfos from '@/composables/use-action-bookinfos';
+
 type State = {
   searchTarget: string;
   isByRelevance: boolean;
@@ -34,9 +37,13 @@ export default defineComponent({
     function setIsByRelevance(value: boolean) {
       state.isByRelevance = value;
     }
+    const { bookInfos } = useBookInfos();
+    const { getBookInfos } = useActionBookInfos(bookInfos);
     return {
       state,
-      setIsByRelevance
+      setIsByRelevance,
+      bookInfos,
+      getBookInfos
     }
   },
 });

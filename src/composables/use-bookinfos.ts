@@ -2,8 +2,8 @@ import { ref } from 'vue';
 import { BookInfo } from '@/types';
 
 export default function() {
-  const bookinfos = ref<BookInfo[]>([]);
+  const bookInfos = ref<BookInfo[]>([]);
   return {
-    bookinfos,
+    bookInfos,
   };
 }
