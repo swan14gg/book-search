@@ -1,6 +1,14 @@
 import dataJSON from './sample.json';
 import bookInfo from './bookinfo.json';
 
+export type BookInfo = {
+  title: string;
+  authors: string[];
+  description: string;
+  thumbnail: string;
+  previewLink: string;
+};
+
 export type BookApiData = {
   kind: string;
   id: string;
