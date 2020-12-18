@@ -97,5 +97,5 @@ export type BookApiData = {
 export type ApiData = {
   kind: string;
   totalItems: number;
-  items: BookInfo[];
+  items: BookApiData[];
 };
