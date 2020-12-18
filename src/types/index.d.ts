@@ -1,7 +1,7 @@
 import dataJSON from './sample.json';
 import bookInfo from './bookinfo.json';
 
-export type BookInfo = {
+export type BookApiData = {
   kind: string;
   id: string;
   etag: string;
