@@ -24,7 +24,6 @@ export default defineComponent({
     const selected = ref(searchType[0]);
     function onChange(event: Event) {
       if (!(event.target instanceof HTMLSelectElement)) return;
-      event.target.value
       context.emit("set", event.target.value === searchType[0]);
     }
     return {

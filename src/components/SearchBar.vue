@@ -1,7 +1,7 @@
 <template>
-  <form class="field has-addons">
+  <form class="field has-addons" @submit.prevent="onSubmit">
     <div class="control has-icons-left">
-      <input type="search" class="input" :class="[commonClasses]" placeholder="Search books..." :value="modelValue" @input="updateValue">
+      <input type="search" class="input" :class="[commonClasses]" placeholder="Search books..." :value="modelValue" @input="onInput">
       <span class="icon is-left">
         <i class="fas fa-book"></i>
       </span>
@@ -22,17 +22,22 @@ export default defineComponent({
   props: {
     modelValue: String
   },
+  emit: ['search'],
   setup(props, context) {
     const commonClasses = [
       "is-medium", "is-rounded", "is-primary"
     ]
-    function updateValue(event: InputEvent) {
+    function onInput(event: InputEvent) {
       if (!(event.target instanceof HTMLInputElement)) return;
       context.emit("update:modelValue", event.target.value);
     }
+    function onSubmit() {
+      context.emit("search");
+    }
     return {
       commonClasses,
-      updateValue
+      onInput,
+      onSubmit
     }
   }
 });

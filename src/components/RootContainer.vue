@@ -1,8 +1,9 @@
 <template>
   <Header />
-  <SearchBar v-model="state.searchTarget" />
-  <SelectSearchType @set="setIsRelevance" />
+  <SearchBar v-model="state.searchTarget" @search="updateBookInfos" />
+  <SelectSearchType @set="setIsByRelevance" />
   <BookCard />
+  {{ bookInfos }}
 </template>
 
 <script lang="ts">
@@ -11,7 +12,6 @@ import Header from './Header.vue';
 import SearchBar from './SearchBar.vue';
 import SelectSearchType from './SelectSearchType.vue';
 import BookCard from './BookCard.vue';
-
 import useBookInfos from '@/composables/use-bookinfos';
 import useActionBookInfos from '@/composables/use-action-bookinfos';
 
@@ -37,13 +37,17 @@ export default defineComponent({
     function setIsByRelevance(value: boolean) {
       state.isByRelevance = value;
     }
+
     const { bookInfos } = useBookInfos();
     const { getBookInfos } = useActionBookInfos(bookInfos);
+    function updateBookInfos() {
+      getBookInfos(state.searchTarget, state.isByRelevance);
+    }
     return {
       state,
       setIsByRelevance,
       bookInfos,
-      getBookInfos
+      updateBookInfos
     }
   },
 });
