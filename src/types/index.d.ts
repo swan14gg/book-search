@@ -1,6 +1,3 @@
-import dataJSON from './sample.json';
-import bookInfo from './bookinfo.json';
-
 export type BookInfo = {
   id: string;
   title: string;
@@ -8,4 +5,23 @@ export type BookInfo = {
   description: string;
   thumbnail: string;
   previewLink: string;
+};
+
+export type ApiData = {
+  king: string;
+  totalitems: number;
+  items?: ItemApiData[];
+};
+
+export type ItemApiData = {
+  id: string;
+  volumeInfo: {
+    title: string;
+    authors?: string[];
+    description?: string;
+    imageLinks?: {
+      thumbnail: string;
+    };
+    previewLink: string;
+  };
 };
