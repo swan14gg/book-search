@@ -1,8 +1,10 @@
 <template>
-  <Header />
-  <SearchBar v-model="state.searchTarget" @search="updateBookInfos" />
-  <SelectSearchType @set="setIsByRelevance" />
-  <BookCardList :bookInfos="bookInfos" />
+  <Header class="mb-5" />
+  <main class="main">
+    <SearchBar class="mb-5" v-model="state.searchTarget" @search="updateBookInfos" />
+    <SelectSearchType class="mb-5" @set="setIsByRelevance" />
+    <BookCardList :bookInfos="bookInfos" />
+  </main>
 </template>
 
 <script lang="ts">
@@ -52,4 +54,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.main {
+  width: 95vw;
+  margin: 0 auto;
+}
+</style>
