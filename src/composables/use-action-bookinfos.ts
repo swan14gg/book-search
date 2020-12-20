@@ -7,6 +7,7 @@ export default function(bookInfos: Ref<BookInfo[]>) {
     const bookApiDatas = await fetchBookApiDatas(target, isByRelevance);
     bookInfos.value = bookApiDatas.map(
       (data: {
+        id: string;
         volumeInfo: {
           title: string;
           authors: string[];
@@ -16,6 +17,7 @@ export default function(bookInfos: Ref<BookInfo[]>) {
         };
       }) => {
         return {
+          id: data.id,
           title: data.volumeInfo.title,
           authors: data.volumeInfo.authors,
           description: data.volumeInfo.description,
