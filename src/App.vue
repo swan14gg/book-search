@@ -27,4 +27,14 @@ $family-sans-serif: 'M PLUS Rounded 1c', sans-serif;
 }
 
 @import "../node_modules/bulma/bulma.sass";
+
+html {
+  font-size: 12px;
+  @include tablet {
+    font-size: 14px;
+  }
+  @include desktop {
+    font-size: 16px;
+  }
+}
 </style>
