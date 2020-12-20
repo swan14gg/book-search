@@ -12,7 +12,7 @@
           <p class="subtitle is-4">{{ author }}</p>
         </div>
       </div>
-      <div class="content is-size-7">{{ description }}</div>
+      <div v-if="description !== ''" class="content is-size-6">{{ description }}</div>
     </div>
   </a>
 </template>
@@ -35,6 +35,9 @@ export default defineComponent({
 <style scoped lang="scss">
 .image {
   width: 100px;
+}
+.media-content {
+  overflow: hidden;
 }
 .card {
   display: block;
