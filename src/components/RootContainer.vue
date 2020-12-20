@@ -39,8 +39,8 @@ export default defineComponent({
       state.isByRelevance = value;
     }
 
-    const { bookInfos } = useBookInfos();
-    const { getBookInfos } = useActionBookInfos(bookInfos);
+    const { bookInfos, isNotFound } = useBookInfos();
+    const { getBookInfos } = useActionBookInfos(bookInfos, isNotFound);
     function updateBookInfos() {
       getBookInfos(state.searchTarget, state.isByRelevance);
     }
@@ -48,6 +48,7 @@ export default defineComponent({
       state,
       setIsByRelevance,
       bookInfos,
+      isNotFound,
       updateBookInfos,
     };
   },
