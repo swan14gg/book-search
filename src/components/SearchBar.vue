@@ -1,6 +1,6 @@
 <template>
   <form class="field has-addons" @submit.prevent="onSubmit">
-    <div class="control has-icons-left">
+    <div class="control has-icons-left is-flex-grow-1">
       <input type="search" class="input" :class="[commonClasses]" placeholder="Search books..." :value="modelValue" @input="onInput">
       <span class="icon is-left">
         <i class="fas fa-book"></i>
