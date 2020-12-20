@@ -10,18 +10,23 @@ export default function(bookInfos: Ref<BookInfo[]>) {
         id: string;
         volumeInfo: {
           title: string;
-          authors: string[];
+          authors: string[] | undefined;
           description: string;
-          imageLinks: { thumbnail: string };
+          imageLinks: { thumbnail: string } | undefined;
           previewLink: string;
         };
       }) => {
+        const thumbnail =
+          data.volumeInfo.imageLinks !== undefined
+            ? data.volumeInfo.imageLinks.thumbnail
+            : 'https://books.google.co.jp/googlebooks/images/no_cover_thumb.gif';
+        const authors = data.volumeInfo.authors !== undefined ? data.volumeInfo.authors.join(', ') : '';
         return {
           id: data.id,
           title: data.volumeInfo.title,
-          authors: data.volumeInfo.authors,
+          authors: authors,
           description: data.volumeInfo.description,
-          thumbnail: data.volumeInfo.imageLinks?.thumbnail,
+          thumbnail: thumbnail,
           previewLink: data.volumeInfo.previewLink,
         };
       }

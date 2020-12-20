@@ -2,8 +2,7 @@
   <Header />
   <SearchBar v-model="state.searchTarget" @search="updateBookInfos" />
   <SelectSearchType @set="setIsByRelevance" />
-  <BookCard />
-  {{ bookInfos }}
+  <BookCardList :bookInfos="bookInfos" />
 </template>
 
 <script lang="ts">
@@ -11,7 +10,7 @@ import { defineComponent, reactive } from 'vue';
 import Header from './Header.vue';
 import SearchBar from './SearchBar.vue';
 import SelectSearchType from './SelectSearchType.vue';
-import BookCard from './BookCard.vue';
+import BookCardList from './BookCardList.vue';
 import useBookInfos from '@/composables/use-bookinfos';
 import useActionBookInfos from '@/composables/use-action-bookinfos';
 
@@ -26,7 +25,7 @@ export default defineComponent({
     Header,
     SearchBar,
     SelectSearchType,
-    BookCard,
+    BookCardList,
   },
 
   setup() {
