@@ -18,7 +18,7 @@ import useActionBookInfos from '@/composables/use-action-bookinfos';
 type State = {
   searchTarget: string;
   isByRelevance: boolean;
-}
+};
 
 export default defineComponent({
   name: 'RootContainer',
@@ -31,8 +31,8 @@ export default defineComponent({
 
   setup() {
     const state = reactive<State>({
-      searchTarget: "",
-      isByRelevance: true
+      searchTarget: '',
+      isByRelevance: true,
     });
     function setIsByRelevance(value: boolean) {
       state.isByRelevance = value;
@@ -47,11 +47,10 @@ export default defineComponent({
       state,
       setIsByRelevance,
       bookInfos,
-      updateBookInfos
-    }
+      updateBookInfos,
+    };
   },
 });
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

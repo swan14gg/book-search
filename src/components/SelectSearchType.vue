@@ -16,21 +16,19 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'SelectSearchType',
-  emit: ["set"],
+  emit: ['set'],
   setup(props, context) {
-    const searchType = [
-      "relevance", "date"
-    ]
+    const searchType = ['relevance', 'date'];
     const selected = ref(searchType[0]);
     function onChange(event: Event) {
       if (!(event.target instanceof HTMLSelectElement)) return;
-      context.emit("set", event.target.value === searchType[0]);
+      context.emit('set', event.target.value === searchType[0]);
     }
     return {
       searchType,
       selected,
-      onChange
-    }
+      onChange,
+    };
   },
 });
 </script>
