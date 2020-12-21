@@ -7,8 +7,8 @@
       v-if="result.isNotFound"
       :message="`「${result.searchTarget}」に一致する書籍は見つかりませんでした。`"
     />
-    <div class="columns is-centered">
-      <LoadingIcon :isLoading="appState.isLoading" />
+    <div v-show="appState.isLoading" class="columns is-centered">
+      <LoadingIcon />
     </div>
     <BookCardList :bookInfos="result.bookInfos" />
   </main>
