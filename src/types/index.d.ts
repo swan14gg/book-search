@@ -36,3 +36,8 @@ export type SearchItem = {
   searchTarget: string;
   isByRelevance: boolean;
 };
+
+export type AppState = {
+  isLoading: boolean;
+  occuredError: boolean;
+};

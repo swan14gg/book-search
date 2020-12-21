@@ -7,6 +7,9 @@
       v-if="result.isNotFound"
       :message="`「${result.searchTarget}」に一致する書籍は見つかりませんでした。`"
     />
+    <div class="columns is-centered">
+      <LoadingIcon :isLoading="appState.isLoading" />
+    </div>
     <BookCardList :bookInfos="result.bookInfos" />
   </main>
 </template>
@@ -18,10 +21,13 @@ import SearchBar from './SearchBar.vue';
 import SelectSearchType from './SelectSearchType.vue';
 import ErrorMessage from './ErrorMessage.vue';
 import BookCardList from './BookCardList.vue';
+import LoadingIcon from './LoadingIcon.vue';
 import useSearchItem from '@/reactive/useSearchItem';
 import useActionSearchItem from '@/reactive/useActionSearchItem';
 import useResult from '@/reactive/useResult';
 import useActionResult from '@/reactive/useActionResult';
+import useAppState from '@/reactive/useAppState';
+import useActionAppState from '@/reactive/useActionAppState';
 
 export default defineComponent({
   name: 'RootContainer',
@@ -31,6 +37,7 @@ export default defineComponent({
     SelectSearchType,
     ErrorMessage,
     BookCardList,
+    LoadingIcon,
   },
 
   setup() {
@@ -38,15 +45,32 @@ export default defineComponent({
     const { setIsByRelevance } = useActionSearchItem(searchItem);
     const { result } = useResult();
     const { getBookInfos } = useActionResult(result);
+    const { appState } = useAppState();
+    const { setIsLoading, setOccuredError } = useActionAppState(appState);
     function updateBookInfos() {
-      getBookInfos(searchItem.searchTarget, searchItem.isByRelevance);
+      setIsLoading(true);
+      setOccuredError(false);
+      getBookInfos(searchItem.searchTarget, searchItem.isByRelevance)
+        .then(() => {
+          setIsLoading(false);
+        })
+        .catch(() => {
+          setOccuredError(true);
+        });
     }
     return {
       searchItem,
       setIsByRelevance,
       result,
+      appState,
       updateBookInfos,
     };
   },
 });
 </script>
+
+<style scoped lang="scss">
+.centered {
+  margin: 0 auto;
+}
+</style>
