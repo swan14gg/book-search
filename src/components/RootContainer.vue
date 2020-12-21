@@ -48,6 +48,9 @@ export default defineComponent({
     const { appState } = useAppState();
     const { setIsLoading, setOccuredError } = useActionAppState(appState);
     function updateBookInfos() {
+      const trimmedTarget = searchItem.searchTarget.trim();
+      if (trimmedTarget === '') return;
+      searchItem.searchTarget = trimmedTarget;
       setIsLoading(true);
       setOccuredError(false);
       getBookInfos(searchItem.searchTarget, searchItem.isByRelevance)
