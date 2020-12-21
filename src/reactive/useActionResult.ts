@@ -1,16 +1,15 @@
-import { Ref } from 'vue';
-import { BookInfo } from '@/types';
+import { Result } from '@/types';
 import { fetchBookApiDatas } from '@/api';
 
-export default function(bookInfos: Ref<BookInfo[]>, isNotFound: Ref<boolean>) {
+export default function(result: Result) {
   async function getBookInfos(target: string, isByRelevance: boolean) {
     const bookApiDatas = await fetchBookApiDatas(target, isByRelevance);
     if (!bookApiDatas) {
-      isNotFound.value = true;
+      result.isNotFound = true;
       return;
     }
-    isNotFound.value = false;
-    bookInfos.value = bookApiDatas.map((data) => {
+    result.isNotFound = false;
+    result.bookInfos = bookApiDatas.map((data) => {
       const authors = data.volumeInfo.authors !== undefined ? data.volumeInfo.authors.join(', ') : '';
       const description = data.volumeInfo.description !== undefined ? data.volumeInfo.description : '';
       const thumbnail =

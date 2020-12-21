@@ -1,3 +1,8 @@
+export type Result = {
+  bookInfos: BookInfo[];
+  isNotFound: boolean;
+};
+
 export type BookInfo = {
   id: string;
   title: string;
@@ -24,4 +29,9 @@ export type ItemApiData = {
     };
     previewLink: string;
   };
+};
+
+export type SearchItem = {
+  searchTarget: string;
+  isByRelevance: boolean;
 };

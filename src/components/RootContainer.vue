@@ -1,25 +1,22 @@
 <template>
   <Header class="mb-5" />
   <main class="container">
-    <SearchBar class="mb-5" v-model="state.searchTarget" @search="updateBookInfos" />
+    <SearchBar class="mb-5" v-model="searchItem.searchTarget" @search="updateBookInfos" />
     <SelectSearchType class="mb-5" @set="setIsByRelevance" />
-    <BookCardList :bookInfos="bookInfos" />
+    <BookCardList :bookInfos="result.bookInfos" />
   </main>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent } from 'vue';
 import Header from './Header.vue';
 import SearchBar from './SearchBar.vue';
 import SelectSearchType from './SelectSearchType.vue';
 import BookCardList from './BookCardList.vue';
-import useBookInfos from '@/composables/use-bookinfos';
-import useActionBookInfos from '@/composables/use-action-bookinfos';
-
-type State = {
-  searchTarget: string;
-  isByRelevance: boolean;
-};
+import useSearchItem from '@/reactive/useSearchItem';
+import useActionSearchItem from '@/reactive/useActionSearchItem';
+import useResult from '@/reactive/useResult';
+import useActionResult from '@/reactive/useActionResult';
 
 export default defineComponent({
   name: 'RootContainer',
@@ -31,24 +28,17 @@ export default defineComponent({
   },
 
   setup() {
-    const state = reactive<State>({
-      searchTarget: '',
-      isByRelevance: true,
-    });
-    function setIsByRelevance(value: boolean) {
-      state.isByRelevance = value;
-    }
-
-    const { bookInfos, isNotFound } = useBookInfos();
-    const { getBookInfos } = useActionBookInfos(bookInfos, isNotFound);
+    const { searchItem } = useSearchItem();
+    const { setIsByRelevance } = useActionSearchItem(searchItem);
+    const { result } = useResult();
+    const { getBookInfos } = useActionResult(result);
     function updateBookInfos() {
-      getBookInfos(state.searchTarget, state.isByRelevance);
+      getBookInfos(searchItem.searchTarget, searchItem.isByRelevance);
     }
     return {
-      state,
+      searchItem,
       setIsByRelevance,
-      bookInfos,
-      isNotFound,
+      result,
       updateBookInfos,
     };
   },
