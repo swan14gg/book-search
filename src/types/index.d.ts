@@ -1,4 +1,5 @@
 export type Result = {
+  searchTarget: string;
   bookInfos: BookInfo[];
   isNotFound: boolean;
 };

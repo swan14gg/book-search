@@ -4,6 +4,7 @@ import { fetchBookApiDatas } from '@/api';
 export default function(result: Result) {
   async function getBookInfos(target: string, isByRelevance: boolean) {
     const bookApiDatas = await fetchBookApiDatas(target, isByRelevance);
+    result.searchTarget = target;
     if (!bookApiDatas) {
       result.isNotFound = true;
       return;
