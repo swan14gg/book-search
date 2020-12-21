@@ -60,6 +60,7 @@ export default defineComponent({
           setIsLoading(false);
         })
         .catch(() => {
+          setIsLoading(false);
           setOccuredError(true);
         });
     }
