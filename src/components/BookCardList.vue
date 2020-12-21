@@ -1,14 +1,17 @@
 <template>
-  <BookCard
-    v-for="bookInfo in bookInfos"
-    class="mb-5"
-    :key="bookInfo.id"
-    :link="bookInfo.previewLink"
-    :imgSrc="bookInfo.thumbnail"
-    :title="bookInfo.title"
-    :author="bookInfo.authors"
-    :description="bookInfo.description"
-  />
+  <ul>
+    <template v-for="bookInfo in bookInfos" :key="bookInfo.id">
+      <li class="mb-5">
+        <BookCard
+          :link="bookInfo.previewLink"
+          :imgSrc="bookInfo.thumbnail"
+          :title="bookInfo.title"
+          :author="bookInfo.authors"
+          :description="bookInfo.description"
+        />
+      </li>
+    </template>
+  </ul>
 </template>
 
 <script lang="ts">
