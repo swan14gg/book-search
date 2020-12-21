@@ -7,6 +7,7 @@
       v-if="result.isNotFound"
       :message="`「${result.searchTarget}」に一致する書籍は見つかりませんでした。`"
     />
+    <ErrorMessage v-if="result.setOccuredError" message="エラーが発生しました。再度お試しください。" />
     <div v-show="appState.isLoading" class="columns is-centered">
       <LoadingIcon />
     </div>
