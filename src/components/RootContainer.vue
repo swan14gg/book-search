@@ -49,6 +49,7 @@ export default defineComponent({
     const { appState } = useAppState();
     const { setIsLoading, setOccuredError } = useActionAppState(appState);
     function updateBookInfos() {
+      if (appState.isLoading) return;
       const trimmedTarget = searchItem.searchTarget.trim();
       if (trimmedTarget === '') return;
       searchItem.searchTarget = trimmedTarget;
@@ -72,9 +73,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped lang="scss">
-.centered {
-  margin: 0 auto;
-}
-</style>
