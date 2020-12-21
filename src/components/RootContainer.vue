@@ -2,7 +2,7 @@
   <Header class="mb-5" />
   <main class="container">
     <SearchBar class="mb-5" v-model="searchItem.searchTarget" @search="updateBookInfos" />
-    <SelectSearchType class="mb-5" @set="setIsByRelevance" />
+    <SelectSearchType class="mb-5" @set="setSearchType" />
     <ErrorMessage
       v-if="result.isNotFound"
       :message="`「${result.searchTarget}」に一致する書籍は見つかりませんでした。`"
@@ -64,12 +64,18 @@ export default defineComponent({
           setOccuredError(true);
         });
     }
+    function setSearchType(value: boolean) {
+      setIsByRelevance(value);
+      if (result.searchTarget === '') return;
+      searchItem.searchTarget = result.searchTarget;
+      updateBookInfos();
+    }
     return {
       searchItem,
-      setIsByRelevance,
       result,
       appState,
       updateBookInfos,
+      setSearchType,
     };
   },
 });
