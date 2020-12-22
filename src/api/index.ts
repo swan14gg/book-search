@@ -1,7 +1,7 @@
 import { ApiData } from '@/types';
 import axios from 'axios';
 
-const baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=search+';
+const baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
 
 // parameters
 const orderBy = '&orderBy=';
