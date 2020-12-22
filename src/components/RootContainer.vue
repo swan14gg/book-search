@@ -1,6 +1,6 @@
 <template>
   <Header class="mb-5" />
-  <main class="container">
+  <main class="container is-max-desktop">
     <SearchBar class="mb-5" v-model="searchItem.searchTarget" @search="updateBookInfos" />
     <SelectSearchType class="mb-5" @set="setSearchType" />
     <ErrorMessage
