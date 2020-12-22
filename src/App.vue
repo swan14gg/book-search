@@ -20,11 +20,6 @@ export default defineComponent({
 
 $family-sans-serif: 'M PLUS Rounded 1c', sans-serif;
 
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 @import '../node_modules/bulma/bulma.sass';
 
 html {
