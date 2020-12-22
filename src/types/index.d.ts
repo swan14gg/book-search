@@ -8,6 +8,7 @@ export type BookInfo = {
   id: string;
   title: string;
   authors: string;
+  publishedDate: string;
   description: string;
   thumbnail: string;
   previewLink: string;
@@ -23,6 +24,7 @@ export type ItemApiData = {
   volumeInfo: {
     title: string;
     authors?: string[];
+    publishedDate?: string;
     description?: string;
     imageLinks?: {
       thumbnail: string;

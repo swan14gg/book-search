@@ -13,6 +13,7 @@ export default function(result: Result) {
     result.isNotFound = false;
     result.bookInfos = bookApiDatas.map((data) => {
       const authors = data.volumeInfo.authors !== undefined ? data.volumeInfo.authors.join(', ') : '';
+      const publishedDate = data.volumeInfo.publishedDate !== undefined ? data.volumeInfo.publishedDate : '';
       const description = data.volumeInfo.description !== undefined ? data.volumeInfo.description : '';
       const thumbnail =
         data.volumeInfo.imageLinks !== undefined
@@ -22,6 +23,7 @@ export default function(result: Result) {
         id: shortid.generate(),
         title: data.volumeInfo.title,
         authors: authors,
+        publishedDate: publishedDate,
         description: description,
         thumbnail: thumbnail,
         previewLink: data.volumeInfo.previewLink,

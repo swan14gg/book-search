@@ -7,6 +7,7 @@
           :imgSrc="bookInfo.thumbnail"
           :title="bookInfo.title"
           :author="bookInfo.authors"
+          :publishedDate="bookInfo.publishedDate"
           :description="bookInfo.description"
         />
       </li>

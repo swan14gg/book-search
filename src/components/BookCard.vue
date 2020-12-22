@@ -9,10 +9,10 @@
         </div>
         <div class="media-content">
           <p class="title is-4">{{ title }}</p>
-          <p class="subtitle is-4">{{ author }}</p>
+          <p v-if="author !== '' && publishedDate !== ''" class="subtitle is-5">{{ author }}・{{ publishedDate }}</p>
+          <p v-if="description !== ''" class="is-size-6">{{ description }}</p>
         </div>
       </div>
-      <div v-if="description !== ''" class="content is-size-6">{{ description }}</div>
     </div>
   </a>
 </template>
@@ -27,6 +27,7 @@ export default defineComponent({
     imgSrc: String,
     title: String,
     author: String,
+    publishedDate: String,
     description: String,
   },
 });
