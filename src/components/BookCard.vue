@@ -9,7 +9,7 @@
         </div>
         <div class="media-content">
           <p class="title is-4">{{ title }}</p>
-          <p v-if="author !== '' && publishedDate !== ''" class="subtitle is-5">{{ author }}・{{ publishedDate }}</p>
+          <p v-if="subTitle !== ''" class="subtitle is-5">{{ subTitle }}</p>
           <p v-if="description !== ''" class="is-size-6">{{ description }}</p>
         </div>
       </div>
@@ -29,6 +29,13 @@ export default defineComponent({
     author: String,
     publishedDate: String,
     description: String,
+  },
+  setup(props) {
+    const subTitle =
+      props.author + (props.author !== '' && props.publishedDate !== '' ? '・' : '') + props.publishedDate;
+    return {
+      subTitle,
+    };
   },
 });
 </script>
