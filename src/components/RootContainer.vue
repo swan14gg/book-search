@@ -21,8 +21,8 @@ import Header from './Header.vue';
 import SearchBar from './SearchBar.vue';
 import SelectSearchType from './SelectSearchType.vue';
 import ErrorMessage from './ErrorMessage.vue';
-import BookCardList from './BookCardList.vue';
 import LoadingIcon from './LoadingIcon.vue';
+import BookCardList from './BookCardList.vue';
 import useSearchItem from '@/reactive/useSearchItem';
 import useActionSearchItem from '@/reactive/useActionSearchItem';
 import useResult from '@/reactive/useResult';
@@ -37,8 +37,8 @@ export default defineComponent({
     SearchBar,
     SelectSearchType,
     ErrorMessage,
-    BookCardList,
     LoadingIcon,
+    BookCardList,
   },
 
   setup() {
@@ -54,10 +54,10 @@ export default defineComponent({
       if (trimmedTarget === '') return;
       searchItem.searchTarget = trimmedTarget;
       setIsLoading(true);
-      setOccuredError(false);
       getBookInfos(searchItem.searchTarget, searchItem.isByRelevance)
         .then(() => {
           setIsLoading(false);
+          setOccuredError(false);
         })
         .catch(() => {
           setIsLoading(false);
