@@ -1,5 +1,6 @@
 import { Result } from '@/types';
 import { fetchBookApiDatas } from '@/api';
+import shortid from 'shortid';
 
 export default function(result: Result) {
   async function getBookInfos(target: string, isByRelevance: boolean) {
@@ -18,7 +19,7 @@ export default function(result: Result) {
           ? data.volumeInfo.imageLinks.thumbnail
           : 'https://books.google.co.jp/googlebooks/images/no_cover_thumb.gif';
       return {
-        id: data.id,
+        id: shortid.generate(),
         title: data.volumeInfo.title,
         authors: authors,
         description: description,

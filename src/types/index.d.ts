@@ -20,7 +20,6 @@ export type ApiData = {
 };
 
 export type ItemApiData = {
-  id: string;
   volumeInfo: {
     title: string;
     authors?: string[];
