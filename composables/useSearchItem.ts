@@ -3,7 +3,11 @@ export default function () {
     searchTarget: "",
     isByRelevance: true,
   });
+  function setIsByRelevance(value: boolean) {
+    searchItem.isByRelevance = value;
+  }
   return {
     searchItem,
+    setIsByRelevance,
   };
 }

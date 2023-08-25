@@ -1,6 +1,5 @@
 <script setup lang="ts">
-const { searchItem } = useSearchItem();
-const { setIsByRelevance } = useActionSearchItem(searchItem);
+const { searchItem, setIsByRelevance } = useSearchItem();
 const { result } = useResult();
 const { getBookInfos } = useActionResult(result);
 const { appState, setIsLoading, setOccuredError } = useAppState();
