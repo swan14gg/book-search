@@ -3,8 +3,7 @@ const { searchItem } = useSearchItem();
 const { setIsByRelevance } = useActionSearchItem(searchItem);
 const { result } = useResult();
 const { getBookInfos } = useActionResult(result);
-const { appState } = useAppState();
-const { setIsLoading, setOccuredError } = useActionAppState(appState);
+const { appState, setIsLoading, setOccuredError } = useAppState();
 
 function updateBookInfos() {
   if (appState.isLoading) return;
