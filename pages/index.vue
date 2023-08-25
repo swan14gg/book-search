@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { searchItem, setIsByRelevance } = useSearchItem();
-const { result } = useResult();
-const { getBookInfos } = useActionResult(result);
+const { result, getBookInfos } = useResult();
 const { appState, setIsLoading, setOccuredError } = useAppState();
 
 function updateBookInfos() {
