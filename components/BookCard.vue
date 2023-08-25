@@ -1,3 +1,24 @@
+<script setup lang="ts">
+type Props = {
+  link: string;
+  imgSrc: string;
+  title: string;
+  author: string;
+  publishedDate: string;
+  description: string;
+};
+
+const props = defineProps<Props>();
+
+const subTitle = computed(() => {
+  return (
+    props.author +
+    (props.author !== "" && props.publishedDate !== "" ? "・" : "") +
+    props.publishedDate
+  );
+});
+</script>
+
 <template>
   <a class="card" :href="link" target="_blank">
     <div class="card-content">
@@ -16,29 +37,6 @@
     </div>
   </a>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'BookCard',
-  props: {
-    link: String,
-    imgSrc: String,
-    title: String,
-    author: String,
-    publishedDate: String,
-    description: String,
-  },
-  setup(props) {
-    const subTitle =
-      props.author + (props.author !== '' && props.publishedDate !== '' ? '・' : '') + props.publishedDate;
-    return {
-      subTitle,
-    };
-  },
-});
-</script>
 
 <style scoped lang="scss">
 .image {

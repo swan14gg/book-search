@@ -1,8 +1,8 @@
-import { Result } from '@/types';
-import { fetchBookApiDatas } from '@/api';
-import shortid from 'shortid';
+import shortid from "shortid";
 
-export default function(result: Result) {
+export default function (result: Result) {
+  const { fetchBookApiDatas } = useApi();
+
   async function getBookInfos(target: string, isByRelevance: boolean) {
     const bookApiDatas = await fetchBookApiDatas(target, isByRelevance);
     result.searchTarget = target;
@@ -12,13 +12,22 @@ export default function(result: Result) {
     }
     result.isNotFound = false;
     result.bookInfos = bookApiDatas.map((data) => {
-      const authors = data.volumeInfo.authors !== undefined ? data.volumeInfo.authors.join(', ') : '';
-      const publishedDate = data.volumeInfo.publishedDate !== undefined ? data.volumeInfo.publishedDate : '';
-      const description = data.volumeInfo.description !== undefined ? data.volumeInfo.description : '';
+      const authors =
+        data.volumeInfo.authors !== undefined
+          ? data.volumeInfo.authors.join(", ")
+          : "";
+      const publishedDate =
+        data.volumeInfo.publishedDate !== undefined
+          ? data.volumeInfo.publishedDate
+          : "";
+      const description =
+        data.volumeInfo.description !== undefined
+          ? data.volumeInfo.description
+          : "";
       const thumbnail =
         data.volumeInfo.imageLinks !== undefined
           ? data.volumeInfo.imageLinks.thumbnail
-          : 'https://books.google.co.jp/googlebooks/images/no_cover_thumb.gif';
+          : "https://books.google.co.jp/googlebooks/images/no_cover_thumb.gif";
       return {
         id: shortid.generate(),
         title: data.volumeInfo.title,

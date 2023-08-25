@@ -1,3 +1,21 @@
+<script setup lang="ts">
+type Props = {
+  modelValue: string;
+};
+defineProps<Props>();
+
+const emit = defineEmits(["update:modelValue", "search"]);
+
+const commonClasses = ["is-medium", "is-rounded", "is-primary"];
+function onInput(event: Event) {
+  if (!(event.target instanceof HTMLInputElement)) return;
+  emit("update:modelValue", event.target.value);
+}
+function onSubmit() {
+  emit("search");
+}
+</script>
+
 <template>
   <form class="field has-addons" @submit.prevent="onSubmit">
     <div class="control has-icons-left is-flex-grow-1">
@@ -20,30 +38,3 @@
     </div>
   </form>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'SearchBar',
-  props: {
-    modelValue: String,
-  },
-  emit: ['search'],
-  setup(props, context) {
-    const commonClasses = ['is-medium', 'is-rounded', 'is-primary'];
-    function onInput(event: InputEvent) {
-      if (!(event.target instanceof HTMLInputElement)) return;
-      context.emit('update:modelValue', event.target.value);
-    }
-    function onSubmit() {
-      context.emit('search');
-    }
-    return {
-      commonClasses,
-      onInput,
-      onSubmit,
-    };
-  },
-});
-</script>

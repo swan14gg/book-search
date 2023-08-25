@@ -1,34 +1,23 @@
 {
-  "name": "book-search",
-  "version": "0.1.0",
+  "name": "nuxt-app",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1",
-    "axios": "^0.21.0",
-    "bulma": "^0.9.1",
-    "core-js": "^3.6.5",
-    "shortid": "^2.2.16",
-    "vue": "^3.0.0"
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@types/node": "^18.17.3",
     "@types/shortid": "^0.0.29",
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/eslint-config-typescript": "^5.0.2",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0",
-    "sass": "^1.26.5",
-    "sass-loader": "^8.0.2",
-    "typescript": "~3.9.3"
+    "nuxt": "^3.6.5",
+    "sass": "^1.66.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "bulma": "^0.9.4",
+    "shortid": "^2.2.16"
   }
 }

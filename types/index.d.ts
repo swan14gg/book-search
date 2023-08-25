@@ -1,10 +1,10 @@
-export type Result = {
+type Result = {
   searchTarget: string;
   bookInfos: BookInfo[];
   isNotFound: boolean;
 };
 
-export type BookInfo = {
+type BookInfo = {
   id: string;
   title: string;
   authors: string;
@@ -14,13 +14,13 @@ export type BookInfo = {
   previewLink: string;
 };
 
-export type ApiData = {
+type ApiData = {
   king: string;
   totalitems: number;
   items?: ItemApiData[];
 };
 
-export type ItemApiData = {
+type ItemApiData = {
   volumeInfo: {
     title: string;
     authors?: string[];
@@ -33,12 +33,12 @@ export type ItemApiData = {
   };
 };
 
-export type SearchItem = {
+type SearchItem = {
   searchTarget: string;
   isByRelevance: boolean;
 };
 
-export type AppState = {
+type AppState = {
   isLoading: boolean;
   occuredError: boolean;
 };
