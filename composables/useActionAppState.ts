@@ -1,6 +1,4 @@
-import { AppState } from '@/types';
-
-export default function(appState: AppState) {
+export default function (appState: AppState) {
   function setIsLoading(value: boolean) {
     appState.isLoading = value;
   }
