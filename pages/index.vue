@@ -4,6 +4,9 @@ const { keyword, orderBy, getBooks, pending, success, error } = useBook();
 const books = ref<Book[]>([]);
 
 async function searchBooks() {
+  if (keyword.value === "") {
+    return;
+  }
   books.value = await getBooks();
 }
 
