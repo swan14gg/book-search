@@ -1,53 +1,36 @@
 <script setup lang="ts">
-const { searchItem, setIsByRelevance } = useSearchItem();
-const { result, getBookInfos } = useResult();
-const { appState, setIsLoading, setOccuredError } = useAppState();
+const { keyword, orderBy, getBooks, pending, success, error } = useBook();
 
-function updateBookInfos() {
-  if (appState.isLoading) return;
-  const trimmedTarget = searchItem.searchTarget.trim();
-  if (trimmedTarget === "") return;
-  searchItem.searchTarget = trimmedTarget;
-  setIsLoading(true);
-  getBookInfos(searchItem.searchTarget, searchItem.isByRelevance)
-    .then(() => {
-      setIsLoading(false);
-      setOccuredError(false);
-    })
-    .catch(() => {
-      setIsLoading(false);
-      setOccuredError(true);
-    });
+const books = ref<Book[]>([]);
+
+async function searchBooks() {
+  books.value = await getBooks();
 }
 
-function setSearchType(value: boolean) {
-  setIsByRelevance(value);
-  if (result.searchTarget === "") return;
-  searchItem.searchTarget = result.searchTarget;
-  updateBookInfos();
-}
+const errorMessage = computed(() => {
+  if (error.value) {
+    return "エラーが発生しました。";
+  } else if (success.value && books.value.length === 0) {
+    return "書籍が見つかりませんでした。";
+  } else {
+    return "";
+  }
+});
 </script>
 
 <template>
   <Header class="mb-5" />
-  <main class="container is-max-desktop">
-    <SearchBar
+  <main class="container is-max-desktop px-1">
+    <SearchBar class="mb-5" v-model:keyword="keyword" @search="searchBooks" />
+    <SelectSearchType
+      v-model:order-by="orderBy"
       class="mb-5"
-      v-model="searchItem.searchTarget"
-      @search="updateBookInfos"
+      @change="searchBooks"
     />
-    <SelectSearchType class="mb-5" @set="setSearchType" />
-    <ErrorMessage
-      v-if="result.isNotFound"
-      :message="`「${result.searchTarget}」に一致する書籍は見つかりませんでした。`"
-    />
-    <ErrorMessage
-      v-if="appState.occuredError"
-      message="エラーが発生しました。再度お試しください。"
-    />
-    <div v-show="appState.isLoading" class="columns is-centered is-mobile">
+    <ErrorMessage v-if="errorMessage" :message="errorMessage" />
+    <div v-show="pending" class="columns is-centered is-mobile">
       <LoadingIcon />
     </div>
-    <BookCardList :bookInfos="result.bookInfos" />
+    <BookCardList :books="books" />
   </main>
 </template>

@@ -1,19 +1,3 @@
-type Result = {
-  searchTarget: string;
-  bookInfos: BookInfo[];
-  isNotFound: boolean;
-};
-
-type BookInfo = {
-  id: string;
-  title: string;
-  authors: string;
-  publishedDate: string;
-  description: string;
-  thumbnail: string;
-  previewLink: string;
-};
-
 type ApiData = {
   king: string;
   totalitems: number;
@@ -21,6 +5,7 @@ type ApiData = {
 };
 
 type ItemApiData = {
+  id: string;
   volumeInfo: {
     title: string;
     authors?: string[];
@@ -33,12 +18,14 @@ type ItemApiData = {
   };
 };
 
-type SearchItem = {
-  searchTarget: string;
-  isByRelevance: boolean;
+type Book = {
+  id: string;
+  title: string;
+  authors: string;
+  publishedDate: string;
+  description: string;
+  thumbnail: string;
+  previewLink: string;
 };
 
-type AppState = {
-  isLoading: boolean;
-  occuredError: boolean;
-};
+type OrderByType = "relevance" | "newest";

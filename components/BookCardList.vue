@@ -1,21 +1,21 @@
 <script setup lang="ts">
 type Props = {
-  bookInfos: BookInfo[];
+  books: Book[];
 };
 defineProps<Props>();
 </script>
 
 <template>
   <ul>
-    <template v-for="bookInfo in bookInfos" :key="bookInfo.id">
+    <template v-for="book in books" :key="book.id">
       <li class="mb-5">
         <BookCard
-          :link="bookInfo.previewLink"
-          :imgSrc="bookInfo.thumbnail"
-          :title="bookInfo.title"
-          :author="bookInfo.authors"
-          :publishedDate="bookInfo.publishedDate"
-          :description="bookInfo.description"
+          :link="book.previewLink"
+          :imgSrc="book.thumbnail"
+          :title="book.title"
+          :author="book.authors"
+          :publishedDate="book.publishedDate"
+          :description="book.description"
         />
       </li>
     </template>
