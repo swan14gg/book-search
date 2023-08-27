@@ -30,7 +30,7 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
   },
-  css: ["assets/styles.scss", "@fortawesome/fontawesome-free/css/all.css"],
+  css: ["assets/styles.scss"],
   devtools:
     process.env.NODE_ENV === "development"
       ? { enabled: true }
