@@ -27,12 +27,12 @@ const commonClasses = ["is-medium", "is-rounded", "is-primary"];
         placeholder="Search books..."
       />
       <span class="icon is-left">
-        <i class="fas fa-book"></i>
+        <span class="material-symbols-outlined"> library_books </span>
       </span>
     </div>
     <div class="control">
       <button type="submit" class="button" :class="[commonClasses]">
-        <i class="fas fa-search"></i>
+        <span class="material-symbols-outlined"> search </span>
       </button>
     </div>
   </form>
